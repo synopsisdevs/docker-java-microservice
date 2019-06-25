@@ -1,0 +1,11 @@
+[supervisord]
+nodaemon=true
+
+[program:textExtractor]
+directory=/usr/data
+command=/bin/bash -c ""
+
+
+[program:pdfPreview]
+directory=/usr/data
+command=/bin/bash -c ""
