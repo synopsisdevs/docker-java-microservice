@@ -2,6 +2,8 @@ FROM openjdk:11-stretch
 
 MAINTAINER developers@synopsis.cz
 
+ENV OPENSSL_VERSION="OpenSSL_1_0_1-stable"
+
 #Prerekvizity pre instalaciu
 RUN apt update && \
     apt -y install make && \
@@ -11,10 +13,10 @@ RUN apt update && \
 #Git pre clone openssl
 RUN apt-get -y install git
 
-#Build a instalacia openssl verzie 0.9.8-stable
+#Build a instalacia openssl verzie 1.0.1-stable
 RUN cd /usr/src && \
     git clone https://github.com/openssl/openssl.git && \
-    cd openssl && git checkout OpenSSL_0_9_8-stable && \
+    cd openssl && git checkout $OPENSSL_VERSION && \
     ./config shared --prefix=/usr/local/openssl/ && \
     make && \
     make install && \
